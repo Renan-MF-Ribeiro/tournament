@@ -1,1 +1,33 @@
-<div></div>
+<div
+  class="tournament h-full grid grid-cols-3 justify-items-center items-center"
+>
+  <div class="phase pl-16">
+    <div class="stage stage1">
+      <div class="teams">
+        <app-team></app-team>
+        <app-team></app-team>
+      </div>
+    </div>
+    <div class="stage stage1">
+      <div class="teams">
+        <app-team></app-team>
+        <app-team></app-team>
+      </div>
+    </div>
+  </div>
+  <div class="phase">
+    <div class="stage stage2 stage1">
+      <div class="teams w-full py-2">
+        <app-team></app-team>
+        <app-team></app-team>
+      </div>
+    </div>
+  </div>
+  <div class="phase">
+    <div class="stage stage3">
+      <div class="teams w-full py-2">
+        <app-team class="winner"></app-team>
+      </div>
+    </div>
+  </div>
+</div>

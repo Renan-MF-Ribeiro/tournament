@@ -1,0 +1,25 @@
+<div
+  class="cursor-pointer"
+  (mouseenter)="openProfile(true)"
+  (mouseleave)="openProfile(false)"
+>
+  <img [src]="character.thumb" alt="Thumb Character" />
+</div>
+<div
+  class="flex fixed top-0 left-0 h-full w-full pointer-events-none"
+  *ngIf="profile"
+>
+  <div class="flex justify-center items-center w-1/4">
+    <img
+      class="h-full fixed left-0 ml-[-10%]"
+      [src]="character.full"
+      alt="Full Character"
+    />
+  </div>
+  <div class="flex flex-col w-3/4 h-full justify-end relative z-10">
+    <div class="content border-solid bottom-2 rounded-xl p-3 bg-[#efda55]">
+      <p class="text-[#EF5567] text-[25px]">{{ character.name.defaultText }}</p>
+      <span class="font-serif">{{ character.description.defaultText }}</span>
+    </div>
+  </div>
+</div>
