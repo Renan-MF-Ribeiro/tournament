@@ -23,18 +23,8 @@ export class HomeComponent implements OnInit {
   champion!: Team;
 
   ngOnInit(): void {
-    const team1 = this._teamService.getWinner('ab');
-    const team2 = this._teamService.getWinner('cd');
-    const team3 = this._teamService.getWinner('ef');
-    const team4 = this._teamService.getWinner('gh');
-
     const finalist1 = this._teamService.getWinner('q12');
     const finalist2 = this._teamService.getWinner('q34');
-
-    if (team1) this.team1 = this._teamService.getTeam(team1);
-    if (team2) this.team2 = this._teamService.getTeam(team2);
-    if (team3) this.team3 = this._teamService.getTeam(team3);
-    if (team4) this.team4 = this._teamService.getTeam(team4);
 
     if (finalist1) this.finalist1 = this._teamService.getTeam(finalist1);
     if (finalist2) this.finalist2 = this._teamService.getTeam(finalist2);
@@ -47,22 +37,6 @@ export class HomeComponent implements OnInit {
         queryParams: { champion: this.champion.idPosition },
       });
     }
-  }
-
-  // Validates that teams exist and have all members
-  validateTeam(team1: string, team2: string) {
-    const t1 = this._teamService.getTeam(team1);
-    const t2 = this._teamService.getTeam(team2);
-    if (t1 && t2) {
-      const validT1 = t1.members.every((item: Character) =>
-        item?.hasOwnProperty('id')
-      );
-      const validT2 = t2.members.every((item: Character) =>
-        item?.hasOwnProperty('id')
-      );
-      return !validT1 || !validT2;
-    }
-    return true;
   }
 
   // Validate if there are finalists

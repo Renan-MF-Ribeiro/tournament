@@ -1,22 +1,3 @@
-.tournament {
-    background-image: url('/assets/background/home.png');
-    background-size: cover;
-    position: relative;
-    z-index: 10;
-    min-width: 1200px;
-    padding: 0 50px;
-
-    &::before {
-        content: '';
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        background: #0000002e;
-        z-index: -1;
-    }
-}
-
-
 .stage {
     display: flex;
     flex-direction: row;
@@ -42,11 +23,23 @@
     align-items: center;
 }
 
-.stage3::before {
+.stage1::after {
+    content: "";
+    width: 100%;
+    height: 50%;
+    border: solid 2px #FFF;
+    border-radius: 0 20px 20px 0;
+    border-left: 0;
+}
+
+.stage2::before {
     content: "";
     width: 100%;
     margin-right: 50px;
-    border-top: solid 2px #FFF;
+    height: 47.5%;
+    border: solid 2px #FFF;
+    border-left: 0;
+    border-right: 0;
 }
 
 

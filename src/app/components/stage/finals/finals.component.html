@@ -1,0 +1,46 @@
+<div class="stage stage2 stage1">
+  <div class="teams w-full py-2">
+    <a
+      [routerLink]="['/battle']"
+      [queryParams]="{
+        team1: team1?.idPosition,
+        team2: team2?.idPosition,
+        key: 'q12'
+      }"
+      [ngClass]="{
+        disabled:
+          team1 == undefined || team2 == undefined || finalist1 != undefined
+      }"
+    >
+      <div class="battle">
+        <div class="w-4/5 text-red">
+          <p>{{ finalist1?.name || "Select Winner!" }}</p>
+        </div>
+        <div class="w-1/5 flex justify-center items-center">
+          <mat-icon svgIcon="play"></mat-icon>
+        </div>
+      </div>
+    </a>
+    <a
+      [routerLink]="['/battle']"
+      [queryParams]="{
+        team1: team3?.idPosition,
+        team2: team4?.idPosition,
+        key: 'q34'
+      }"
+      [ngClass]="{
+        disabled:
+          team3 == undefined || team4 == undefined || finalist2 != undefined
+      }"
+    >
+      <div class="battle">
+        <div class="w-4/5 text-red">
+          <p>{{ finalist2?.name || "Select Winner!" }}</p>
+        </div>
+        <div class="w-1/5 flex justify-center items-center">
+          <mat-icon svgIcon="play"></mat-icon>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

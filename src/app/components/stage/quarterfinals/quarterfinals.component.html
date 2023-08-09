@@ -1,0 +1,72 @@
+<div class="stage stage2 stage1">
+  <div class="teams w-full py-2">
+    <a
+      [routerLink]="['/battle']"
+      [queryParams]="{ team1: 'team-A', team2: 'team-B', key: 'ab' }"
+      [ngClass]="{
+        disabled: validateTeam('team-A', 'team-B') || team1 != undefined
+      }"
+    >
+      <div class="battle">
+        <div class="w-4/5 text-red">
+          <p>{{ team1?.name || "Select Winner!" }}</p>
+        </div>
+        <div class="w-1/5 flex justify-center items-center">
+          <mat-icon svgIcon="play"></mat-icon>
+        </div>
+      </div>
+    </a>
+    <a
+      [routerLink]="['/battle']"
+      [queryParams]="{ team1: 'team-C', team2: 'team-D', key: 'cd' }"
+      [ngClass]="{
+        disabled: validateTeam('team-C', 'team-D') || team2 != undefined
+      }"
+    >
+      <div class="battle">
+        <div class="w-4/5 text-red">
+          <p>{{ team2?.name || "Select Winner!" }}</p>
+        </div>
+        <div class="w-1/5 flex justify-center items-center">
+          <mat-icon svgIcon="play"></mat-icon>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+<div class="stage stage2 stage1">
+  <div class="teams w-full py-2">
+    <a
+      [routerLink]="['/battle']"
+      [queryParams]="{ team1: 'team-E', team2: 'team-F', key: 'ef' }"
+      [ngClass]="{
+        disabled: validateTeam('team-E', 'team-F') || team3 != undefined
+      }"
+    >
+      <div class="battle">
+        <div class="w-4/5 text-red">
+          <p>{{ team3?.name || "Select Winner!" }}</p>
+        </div>
+        <div class="w-1/5 flex justify-center items-center">
+          <mat-icon svgIcon="play"></mat-icon>
+        </div>
+      </div>
+    </a>
+    <a
+      [routerLink]="['/battle']"
+      [queryParams]="{ team1: 'team-G', team2: 'team-H', key: 'gh' }"
+      [ngClass]="{
+        disabled: validateTeam('team-G', 'team-H') || team4 != undefined
+      }"
+    >
+      <div class="battle">
+        <div class="w-4/5 text-red">
+          <p>{{ team4?.name || "Select Winner!" }}</p>
+        </div>
+        <div class="w-1/5 flex justify-center items-center">
+          <mat-icon svgIcon="play"></mat-icon>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

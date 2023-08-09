@@ -23,7 +23,7 @@ export class TeamService {
   }
 
   //returns the team requested by id
-  getTeam(idPosition: string) {
+  getTeam(idPosition: string): Team {
     const teams = JSON.parse(sessionStorage.getItem('teams') || '[]');
     return teams?.find((team: Team) => team.idPosition == idPosition);
   }
@@ -98,5 +98,19 @@ export class TeamService {
     sessionStorage.clear();
     this.finalists = { ab: '', cd: '', ef: '', gh: '', q12: '', q34: '' };
     this.teams = [];
+  }
+
+  fillTeams() {
+    const team1 = this.getWinner('ab');
+    const team2 = this.getWinner('cd');
+    const team3 = this.getWinner('ef');
+    const team4 = this.getWinner('gh');
+
+    return {
+      team1: this.getTeam(team1),
+      team2: this.getTeam(team2),
+      team3: this.getTeam(team3),
+      team4: this.getTeam(team4),
+    };
   }
 }
