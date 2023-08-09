@@ -11,7 +11,11 @@ export class TeamService {
     [x: string]: string;
     ab: string;
     cd: string;
-  } = { ab: '', cd: '' };
+    ef: string;
+    gh: string;
+    q12: string;
+    q34: string;
+  } = { ab: '', cd: '', ef: '', gh: '', q12: '', q34: '' };
 
   constructor() {
     this.teams = JSON.parse(sessionStorage.getItem('teams') || '[]');
@@ -67,7 +71,7 @@ export class TeamService {
   }
 
   //Returns the id of the finalist team by the requested key
-  getFinalist(key: string) {
+  getWinner(key: string) {
     const finalist = JSON.parse(sessionStorage.getItem('finalists') || '{}');
     return finalist[key];
   }
@@ -92,7 +96,7 @@ export class TeamService {
   // Restarts the tournament, clearing recorded information
   restart() {
     sessionStorage.clear();
-    this.finalists = { ab: '', cd: '' };
+    this.finalists = { ab: '', cd: '', ef: '', gh: '', q12: '', q34: '' };
     this.teams = [];
   }
 }

@@ -19,6 +19,7 @@ export class BattleComponent implements OnInit, OnDestroy {
   team2!: Team;
 
   final: boolean = false;
+  key!: string;
 
   result = {
     team1: '',
@@ -31,6 +32,7 @@ export class BattleComponent implements OnInit, OnDestroy {
       .subscribe((keys) => {
         this.team1 = this._teamService.getTeam(keys['team1']);
         this.team2 = this._teamService.getTeam(keys['team2']);
+        this.key = keys['key'];
         this.final = keys['final'] == 'true';
       });
   }
@@ -52,8 +54,7 @@ export class BattleComponent implements OnInit, OnDestroy {
     if (this.final) {
       this._teamService.setChampion(winnerTeam);
     } else {
-      const key = this.team1.idPosition == 'team-A' ? 'ab' : 'cd';
-      this._teamService.saveFinalist(winnerTeam, key);
+      this._teamService.saveFinalist(winnerTeam, this.key);
     }
   }
 
