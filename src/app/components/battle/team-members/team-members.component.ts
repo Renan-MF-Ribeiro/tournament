@@ -7,6 +7,7 @@ import { Team } from 'src/app/models/team';
   styleUrls: ['./team-members.component.scss'],
 })
 export class TeamMembersComponent {
+  //display characters in order
   @Input() team!: Team;
   @Input() side!: string;
 }

@@ -1,0 +1,11 @@
+<div class="winner flex flex-row w-full">
+  <div class="flex flex-col justify-around items-center w-3/4">
+    <p class="mt-[10%] text-6xl text-red">{{ team.name }}</p>
+    <app-team-members [team]="team"></app-team-members>
+  </div>
+  <div class="flex flex-col justify-around w-1/4">
+    <img class="w-full" src="/assets/images/win.png" alt="Winner" />
+
+    <button (click)="restart()" class="button w-full">restart</button>
+  </div>
+</div>

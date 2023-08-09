@@ -1,0 +1,30 @@
+.winner {
+    background-image: url('/assets/background/winner.png');
+    background-size: cover;
+    height: 100%;
+}
+
+.button {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    background-color: #EF5567;
+    padding: 4px;
+    border-radius: 6px;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: bold;
+
+    &:hover {
+        background-color: #efda55;
+
+    }
+
+    &.w-full {
+        width: 100%;
+    }
+
+}

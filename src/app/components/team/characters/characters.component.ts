@@ -16,6 +16,7 @@ export class CharactersComponent {
     this.profile = value;
   }
 
+  //Disable character already selected
   get inSelected() {
     return (this.selected || []).find((ch) => ch?.id == this.character?.id);
   }

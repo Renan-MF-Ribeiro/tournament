@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 import { Team } from 'src/app/models/team';
 import { TeamService } from 'src/app/services/team.service';
 
@@ -8,7 +9,8 @@ import { TeamService } from 'src/app/services/team.service';
   templateUrl: './battle.component.html',
   styleUrls: ['./battle.component.scss'],
 })
-export class BattleComponent implements OnInit {
+export class BattleComponent implements OnInit, OnDestroy {
+  private _destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
     private _activedRoute: ActivatedRoute,
     private _teamService: TeamService
@@ -24,13 +26,16 @@ export class BattleComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this._activedRoute.queryParams.subscribe((keys) => {
-      this.team1 = this._teamService.getTeam(keys['team1']);
-      this.team2 = this._teamService.getTeam(keys['team2']);
-      this.final = keys['final'] == 'true';
-    });
+    this._activedRoute.queryParams
+      .pipe(takeUntil(this._destroy$))
+      .subscribe((keys) => {
+        this.team1 = this._teamService.getTeam(keys['team1']);
+        this.team2 = this._teamService.getTeam(keys['team2']);
+        this.final = keys['final'] == 'true';
+      });
   }
 
+  //Defines and saves the result of the match
   winner(winner: string) {
     this.result.team1 =
       winner == 'team1'
@@ -41,17 +46,20 @@ export class BattleComponent implements OnInit {
         ? '/assets/images/win.png'
         : '/assets/images/defeat.png';
 
-    if (!this.final) {
-      const key = this.team1.idPosition == 'team-A' ? 'ab' : 'cd';
+    const winnerTeam = winner == 'team1' ? this.team1 : this.team2;
 
-      this._teamService.saveFinalist(
-        winner == 'team1' ? this.team1 : this.team2,
-        key
-      );
+    //Validates if it's the final battle
+    if (this.final) {
+      this._teamService.setChampion(winnerTeam);
     } else {
-      this._teamService.setChampion(
-        winner == 'team1' ? this.team1 : this.team2
-      );
+      const key = this.team1.idPosition == 'team-A' ? 'ab' : 'cd';
+      this._teamService.saveFinalist(winnerTeam, key);
     }
+  }
+
+  //Unsubscribe observables
+  ngOnDestroy() {
+    this._destroy$.next(true);
+    this._destroy$.complete();
   }
 }

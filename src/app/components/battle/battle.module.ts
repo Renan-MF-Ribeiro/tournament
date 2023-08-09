@@ -5,16 +5,18 @@ import { TeamMembersComponent } from './team-members/team-members.component';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { WinnersComponent } from './winners/winners.component';
 
 const routes: Routes = [
   {
     path: '',
     component: BattleComponent,
   },
+  { path: 'winners', component: WinnersComponent },
 ];
 
 @NgModule({
-  declarations: [BattleComponent, TeamMembersComponent],
+  declarations: [BattleComponent, TeamMembersComponent, WinnersComponent],
   imports: [
     CommonModule,
     MatIconModule,
