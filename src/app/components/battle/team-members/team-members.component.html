@@ -1,1 +1,10 @@
-<p>team-members works!</p>
+<div
+  class="grid grid-cols-5 w-full h-full justify-center items-center ml-[-150px]"
+>
+  <img
+    *ngFor="let member of team?.members"
+    [src]="member.full"
+    alt="Member"
+    class="max-w-md"
+  />
+</div>

@@ -20,12 +20,12 @@
       <div class="teams w-full py-2">
         <a
           [routerLink]="['/battle']"
-          [queryParams]="{ teamA: 'team-A', teamB: 'team-B' }"
-          [ngClass]="{ disabled: stageAB }"
+          [queryParams]="{ team1: 'team-A', team2: 'team-B' }"
+          [ngClass]="{ disabled: stageAB || finalist1 != undefined }"
         >
           <div class="battle">
             <div class="w-4/5 text-[#EF5567]">
-              <p>{{ "Select Winner!" }}</p>
+              <p>{{ finalist1?.name || "Select Winner!" }}</p>
             </div>
             <div class="w-1/5 flex justify-center items-center">
               <mat-icon>play_arrow</mat-icon>
@@ -34,12 +34,12 @@
         </a>
         <a
           [routerLink]="['/battle']"
-          [queryParams]="{ teamA: 'team-C', teamB: 'team-D' }"
-          [ngClass]="{ disabled: stageCD }"
+          [queryParams]="{ team1: 'team-C', team2: 'team-D' }"
+          [ngClass]="{ disabled: stageCD || finalist2 != undefined }"
         >
           <div class="battle">
             <div class="w-4/5 text-[#EF5567]">
-              <p>{{ "Select Winner!" }}</p>
+              <p>{{ finalist2?.name || "Select Winner!" }}</p>
             </div>
             <div class="w-1/5 flex justify-center items-center">
               <mat-icon>play_arrow</mat-icon>
@@ -52,7 +52,24 @@
   <div class="phase">
     <div class="stage stage3">
       <div class="teams w-full py-2">
-        <app-team class="winner"></app-team>
+        <a
+          [routerLink]="['/battle']"
+          [queryParams]="{
+            team1: finalist1?.idPosition,
+            team2: finalist2?.idPosition,
+            final: true
+          }"
+          [ngClass]="{ disabled: !final }"
+        >
+          <div class="battle">
+            <div class="w-4/5 text-[#EF5567]">
+              <p>{{ champion?.name || "Select Champion!" }}</p>
+            </div>
+            <div class="w-1/5 flex justify-center items-center">
+              <mat-icon>play_arrow</mat-icon>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   </div>

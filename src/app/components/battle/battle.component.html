@@ -1,3 +1,34 @@
-<div
-  class="battle h-full grid grid-cols-3 justify-items-center items-center"
-></div>
+<div class="battle h-full flex flex-row justify-items-center items-center">
+  <div class="colTeam">
+    <p class="mt-[10%] text-5xl">{{ team1.name }}</p>
+    <div class="flex flex-row justify-center items-center" *ngIf="result.team1">
+      <img class="w-[350px]" [src]="result.team1" alt="Result Team 1" />
+    </div>
+    <app-team-members side="left" [team]="team1"></app-team-members>
+  </div>
+  <div class="flex flex-col w-2/12 h-full items-center justify-center">
+    <div class="w-full flex gap-3" *ngIf="!result.team1">
+      <button (click)="winner('team1')" class="button">
+        <mat-icon>arrow_left</mat-icon>
+        <p class="pt-1">winner</p>
+      </button>
+      <button (click)="winner('team2')" class="button">
+        <p class="pt-1">winner</p>
+        <mat-icon>arrow_right</mat-icon>
+      </button>
+    </div>
+    <img src="/assets/images/vs.png" alt="" />
+    <div class="w-full flex gap-3 text-lg" *ngIf="result.team1">
+      <a [routerLink]="['/']" class="w-full"
+        ><button class="button w-full">back</button></a
+      >
+    </div>
+  </div>
+  <div class="colTeam">
+    <p class="mt-[10%] text-5xl">{{ team2.name }}</p>
+    <div class="flex flex-row justify-center items-center" *ngIf="result.team2">
+      <img class="w-[350px]" [src]="result.team2" alt="Result Team 1" />
+    </div>
+    <app-team-members side="right" [team]="team2"></app-team-members>
+  </div>
+</div>

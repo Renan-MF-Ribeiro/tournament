@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Team } from '../models/team';
 import { Character } from '../models/characters';
 
@@ -7,8 +7,16 @@ import { Character } from '../models/characters';
 })
 export class TeamService {
   private teams: Team[] = [];
+  private finalists: {
+    [x: string]: string;
+    ab: string;
+    cd: string;
+  } = { ab: '', cd: '' };
 
-  constructor() {}
+  constructor() {
+    this.teams = JSON.parse(sessionStorage.getItem('teams') || '[]');
+    this.finalists = JSON.parse(sessionStorage.getItem('finalists') || '');
+  }
 
   getTeam(idPosition: string) {
     const teams = JSON.parse(sessionStorage.getItem('teams') || '[]');
@@ -55,5 +63,24 @@ export class TeamService {
       this.teams.push(team);
     }
     sessionStorage.setItem('teams', JSON.stringify([...this.teams]));
+  }
+
+  getFinalist(key: string) {
+    const finalist = JSON.parse(sessionStorage.getItem('finalists') || '');
+    return finalist[key];
+  }
+
+  saveFinalist(finalist: Team, key: string) {
+    this.finalists[key] = finalist.idPosition;
+    sessionStorage.setItem('finalists', JSON.stringify(this.finalists));
+  }
+
+  getChampion() {
+    const champion = JSON.parse(sessionStorage.getItem('champion') || '');
+    return champion;
+  }
+
+  setChampion(champion: Team) {
+    sessionStorage.setItem('champion', JSON.stringify(champion));
   }
 }

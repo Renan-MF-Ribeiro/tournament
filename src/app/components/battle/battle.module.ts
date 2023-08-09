@@ -4,6 +4,7 @@ import { BattleComponent } from './battle.component';
 import { TeamMembersComponent } from './team-members/team-members.component';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 const routes: Routes = [
   {
@@ -14,6 +15,11 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [BattleComponent, TeamMembersComponent],
-  imports: [CommonModule, MatIconModule, RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    RouterModule.forChild(routes),
+    MatButtonToggleModule,
+  ],
 })
 export class BattleModule {}
