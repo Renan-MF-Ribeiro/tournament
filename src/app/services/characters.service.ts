@@ -11,6 +11,7 @@ export class CharactersService {
   private dataUrl = 'assets/mock/db.json';
   constructor(private http: HttpClient) {}
 
+  // Get from fake backend for all available characters
   list(): Observable<any[]> {
     return this.http.get<any[]>(this.dataUrl).pipe(
       map((value) => {

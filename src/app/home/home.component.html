@@ -1,20 +1,34 @@
 <div
   class="tournament h-full grid grid-cols-3 justify-items-center items-center"
 >
+  <!-- First stage of the tournament -->
   <div class="phase pl-16">
     <div class="stage stage1">
       <div class="teams">
-        <app-team idPosition="team-A"></app-team>
-        <app-team idPosition="team-B"></app-team>
+        <app-team
+          [ngClass]="{ disabled: finalist1 != undefined }"
+          idPosition="team-A"
+        ></app-team>
+        <app-team
+          [ngClass]="{ disabled: finalist1 != undefined }"
+          idPosition="team-B"
+        ></app-team>
       </div>
     </div>
     <div class="stage stage1">
       <div class="teams">
-        <app-team idPosition="team-C"></app-team>
-        <app-team idPosition="team-D"></app-team>
+        <app-team
+          [ngClass]="{ disabled: finalist2 != undefined }"
+          idPosition="team-C"
+        ></app-team>
+        <app-team
+          [ngClass]="{ disabled: finalist2 != undefined }"
+          idPosition="team-D"
+        ></app-team>
       </div>
     </div>
   </div>
+  <!-- Final of the tournament -->
   <div class="phase">
     <div class="stage stage2 stage1">
       <div class="teams w-full py-2">
@@ -24,11 +38,11 @@
           [ngClass]="{ disabled: stageAB || finalist1 != undefined }"
         >
           <div class="battle">
-            <div class="w-4/5 text-[#EF5567]">
+            <div class="w-4/5 text-red">
               <p>{{ finalist1?.name || "Select Winner!" }}</p>
             </div>
             <div class="w-1/5 flex justify-center items-center">
-              <mat-icon>play_arrow</mat-icon>
+              <mat-icon svgIcon="play"></mat-icon>
             </div>
           </div>
         </a>
@@ -38,17 +52,18 @@
           [ngClass]="{ disabled: stageCD || finalist2 != undefined }"
         >
           <div class="battle">
-            <div class="w-4/5 text-[#EF5567]">
+            <div class="w-4/5 text-red">
               <p>{{ finalist2?.name || "Select Winner!" }}</p>
             </div>
             <div class="w-1/5 flex justify-center items-center">
-              <mat-icon>play_arrow</mat-icon>
+              <mat-icon svgIcon="play"></mat-icon>
             </div>
           </div>
         </a>
       </div>
     </div>
   </div>
+  <!-- Champion the tournament -->
   <div class="phase">
     <div class="stage stage3">
       <div class="teams w-full py-2">
@@ -62,11 +77,11 @@
           [ngClass]="{ disabled: !final }"
         >
           <div class="battle">
-            <div class="w-4/5 text-[#EF5567]">
-              <p>{{ champion?.name || "Select Champion!" }}</p>
+            <div class="w-4/5 text-red">
+              <p>Select Champion!</p>
             </div>
             <div class="w-1/5 flex justify-center items-center">
-              <mat-icon>play_arrow</mat-icon>
+              <mat-icon svgIcon="play"></mat-icon>
             </div>
           </div>
         </a>

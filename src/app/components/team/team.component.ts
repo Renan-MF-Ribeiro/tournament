@@ -18,6 +18,7 @@ export class TeamComponent implements OnInit {
     this.team = this._teamService.getTeam(this.idPosition);
   }
 
+  // Opens the character selection screen
   openSelect() {
     const selectRef = this.dialog.open(SelectTeamComponent, {
       data: this.idPosition,
