@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Character } from 'src/app/models/characters';
 
 @Component({
@@ -8,9 +8,15 @@ import { Character } from 'src/app/models/characters';
 })
 export class CharactersComponent {
   @Input() character!: Character;
+  @Input() selected!: Character[];
+  @Output() select = new EventEmitter<Character>();
   profile: boolean = false;
 
   openProfile(value: boolean) {
     this.profile = value;
+  }
+
+  get inSelected() {
+    return (this.selected || []).find((ch) => ch?.id == this.character?.id);
   }
 }

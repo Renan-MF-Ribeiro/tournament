@@ -1,0 +1,16 @@
+.battle {
+    background-image: url('/assets/background/summoners-rift.jpg');
+    background-size: cover;
+    position: relative;
+    z-index: 10;
+    min-width: 1200px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: #0000002e;
+        z-index: -1;
+    }
+}

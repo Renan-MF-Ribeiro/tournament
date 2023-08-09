@@ -1,0 +1,85 @@
+.tournament {
+    background-image: url('/assets/background/summoners-rift.jpg');
+    background-size: cover;
+    position: relative;
+    z-index: 10;
+    min-width: 1200px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: #0000002e;
+        z-index: -1;
+    }
+}
+
+
+.stage {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+
+.teams {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+    min-width: 200px;
+}
+
+.phase {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+
+.stage1::after {
+    content: "";
+    width: 100%;
+    height: 50%;
+    border: solid 2px #FFF;
+    border-radius: 0 20px 20px 0;
+    border-left: 0;
+}
+
+.stage2::before {
+    content: "";
+    width: 100%;
+    margin-right: 50px;
+    height: 47.5%;
+    border: solid 2px #FFF;
+    border-left: 0;
+    border-right: 0;
+}
+
+.stage3::before {
+    content: "";
+    width: 100%;
+    margin-right: 50px;
+    border-top: solid 2px #FFF;
+}
+
+.battle {
+    border: solid 1px #fafafa;
+    border-radius: 12px;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    background: #0C1723;
+    justify-content: center;
+    color: #EF5567;
+    cursor: pointer;
+}
+
+.disabled {
+    opacity: 0.65;
+    pointer-events: none;
+}

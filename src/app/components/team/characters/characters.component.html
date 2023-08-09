@@ -1,7 +1,9 @@
 <div
-  class="cursor-pointer"
+  class="cursor-pointer relative"
   (mouseenter)="openProfile(true)"
   (mouseleave)="openProfile(false)"
+  (click)="select.emit(character)"
+  [ngClass]="{ overlay: inSelected }"
 >
   <img [src]="character.thumb" alt="Thumb Character" />
 </div>

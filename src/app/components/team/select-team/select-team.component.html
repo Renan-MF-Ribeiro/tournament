@@ -2,14 +2,14 @@
   <div class="info w-1/4 flex flex-col justify-between p-3">
     <div class="flex flex-col">
       <mat-label class="text-[#EF5567]">Team:</mat-label>
-      <input class="px-3 py-1 rounded-xl" type="text" />
+      <input [(ngModel)]="team.name" class="px-3 py-1 rounded-xl" type="text" />
     </div>
     <div class="flex flex-col h-full justify-center">
-      <app-selected-characters class="max-h-8 my-2"></app-selected-characters>
-      <app-selected-characters class="max-h-8 my-2"></app-selected-characters>
-      <app-selected-characters class="max-h-8 my-2"></app-selected-characters>
-      <app-selected-characters class="max-h-8 my-2"></app-selected-characters>
-      <app-selected-characters class="max-h-8 my-2"></app-selected-characters>
+      <app-selected-characters
+        *ngFor="let character of team?.members"
+        [character]="character"
+        class="max-h-8 my-2"
+      ></app-selected-characters>
     </div>
   </div>
   <div class="flex flex-col p-3 w-3/4">
@@ -20,10 +20,15 @@
       <app-characters
         *ngFor="let character of characters"
         [character]="character"
+        [selected]="team?.members || []"
+        (select)="setTeam($event)"
       ></app-characters>
     </div>
     <div class="flex flex-row justify-center items-center h-full gap-4">
-      <button class="bg-[#EF5567] py-1 px-4 rounded-md text-lg font-bold">
+      <button
+        (click)="saveTeam()"
+        class="bg-[#EF5567] py-1 px-4 rounded-md text-lg font-bold"
+      >
         CONFIRM
       </button>
       <button class="bg-[#efda55] py-1 px-4 rounded-md text-lg font-bold">

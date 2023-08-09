@@ -1,0 +1,8 @@
+<div class="flex flex-row">
+  <mat-label class="w-4/5 text-[#EF5567]">{{
+    character?.name?.defaultText || "Empty"
+  }}</mat-label>
+  <div class="flex w-1/5" *ngIf="character">
+    <img [src]="character.thumb" alt="Character Selected" />
+  </div>
+</div>
